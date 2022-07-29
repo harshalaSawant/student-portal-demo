@@ -1,0 +1,50 @@
+<table mat-table [dataSource]="data" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element" contenteditable="true"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element" contenteditable="true" > {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element" contenteditable="true"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Maths">
+    <th mat-header-cell *matHeaderCellDef> Maths </th>
+    <td mat-cell *matCellDef="let element" contenteditable="true"
+    (keyup)="scoreChange(element.id, 'Maths', $event)"> {{element.Maths}} </td>
+  </ng-container>
+  <ng-container matColumnDef="English">
+    <th mat-header-cell *matHeaderCellDef> English </th>
+    <td mat-cell *matCellDef="let element" contenteditable="true"
+    (keyup)="scoreChange(element.id, 'English', $event)"> {{element.English}} </td>
+  </ng-container>
+  <ng-container matColumnDef="French">
+    <th mat-header-cell *matHeaderCellDef> French </th>
+    <td mat-cell *matCellDef="let element" contenteditable="true"
+    (keyup)="scoreChange(element.id, 'French', $event)"> {{element.French}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Science">
+    <th mat-header-cell *matHeaderCellDef> Science </th>
+    <td mat-cell *matCellDef="let element" contenteditable="true"
+    (keyup)="scoreChange(element.id, 'Science', $event)"> {{element.Science}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Social">
+    <th mat-header-cell *matHeaderCellDef> Social </th>
+    <td mat-cell *matCellDef="let element" contenteditable="true"
+    (keyup)="scoreChange(element.id, 'Social', $event)"> {{element.Social}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<div *ngIf="showActionButtons">
+  <button type="submit" (click)="saveChanges()">Save</button>
+  <button type="button" (click)="cancelSave()">Cancel</button>
+</div>
