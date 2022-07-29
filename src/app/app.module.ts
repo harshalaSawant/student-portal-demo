@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { GradesDashboardComponent } from './components/grades-dashboard/grades-dashboard.component';
 import { GradesDetailComponent } from './components/grades-detail/grades-detail.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatTableModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')

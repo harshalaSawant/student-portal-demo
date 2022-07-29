@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { of, Subject } from 'rxjs';
 import { students } from '../../assets/student-data/student-grades';
 
+export interface GradePercent {
+  grade: number;
+  value: number;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +13,7 @@ export class StudentDetailsService {
 
   studentData = students;
   scoreChanged: Subject<any> = new Subject();
+  gradePercents: GradePercent[] = [];
 
   constructor() { }
 
@@ -25,5 +30,11 @@ export class StudentDetailsService {
   saveNewScores(newScores: any[]) {
     this.studentData = JSON.parse(JSON.stringify(newScores));
     this.scoreChanged.next(this.studentData);
+  }
+  saveGradePercent(postObj: GradePercent) {
+    this.gradePercents.push(postObj);
+  }
+  getGradePercent(grade: number) {
+    return this.gradePercents.find(x => x.grade === grade);
   }
 }

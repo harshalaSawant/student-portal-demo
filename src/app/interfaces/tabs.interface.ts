@@ -12,7 +12,7 @@ export interface IStudentGrade {
 export interface IStudentDetail {
   id: number;
   name: string;
-  grade: string;
+  grade: number;
   email: string;
   performance: Array<IStudentGrade>;
 }

@@ -1,0 +1,9 @@
+input {
+    border: none;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    &:invalid {
+        border: 2px solid red;
+    }
+}
