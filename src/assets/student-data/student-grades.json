@@ -1,0 +1,167 @@
+[
+  {
+    "id": 101,
+    "grade": 1,
+    "name": "Ginny Weasley",
+    "email": "gw@school.com",
+    "Maths": 100,
+    "English": 80,
+    "French": 90,
+    "Science": 80,
+    "Social": 80
+  },
+  {
+    "id": 102,
+    "grade": 1,
+    "name": "Luna Lovegood",
+    "email": "ll@school.com",
+    "Maths": 100,
+    "English": 90,
+    "French": 90,
+    "Science": 90,
+    "Social": 95
+  },
+  {
+    "id": 103,
+    "grade": 1,
+    "name": "Collin Creevey",
+    "email": "cc@school.com",
+    "Maths": 100,
+    "English": 80,
+    "French": 60,
+    "Science": 70,
+    "Social": 30
+  },
+  {
+    "id": 104,
+    "grade": 1,
+    "name": "Dennis Creevey",
+    "email": "dc@school.com",
+    "Maths": 90,
+    "English": 80,
+    "French": 60,
+    "Science": 70,
+    "Social": 30
+  },
+  {
+    "id": 105,
+    "grade": 1,
+    "name": "Susan Bones",
+    "email": "sb@school.com",
+    "Maths": 90,
+    "English": 80,
+    "French": 75,
+    "Science": 70,
+    "Social": 90
+  },
+  {
+    "id": 201,
+    "grade": 2,
+    "name": "Harry Potter",
+    "email": "hp@school.com",
+    "Maths": 80,
+    "English": 80,
+    "French": 65,
+    "Science": 80,
+    "Social": 80
+  },
+  {
+    "id": 202,
+    "grade": 2,
+    "name": "Hermione Granger",
+    "email": "hg@school.com",
+    "Maths": 100,
+    "English": 100,
+    "French": 100,
+    "Science": 100,
+    "Social": 100
+  },
+  {
+    "id": 203,
+    "grade": 2,
+    "name": "Ronald Weasley",
+    "email": "rw@school.com",
+    "Maths": 75,
+    "English": 95,
+    "French": 65,
+    "Science": 80,
+    "Social": 35
+  },
+  {
+    "id": 204,
+    "grade": 2,
+    "name": "Draco Malfoy",
+    "email": "dm@school.com",
+    "Maths": 88,
+    "English": 95,
+    "French": 60,
+    "Science": 80,
+    "Social": 35
+  },
+  {
+    "id": 205,
+    "grade": 2,
+    "name": "Neville Longbottom",
+    "email": "nl@school.com",
+    "Maths": 65,
+    "English": 90,
+    "French": 60,
+    "Science": 90,
+    "Social": 55
+  },
+  {
+    "id": 401,
+    "grade": 3,
+    "name": "Angelina Johnson",
+    "email": "aj@school.com",
+    "Maths": 95,
+    "English": 95,
+    "French": 85,
+    "Science": 80,
+    "Social": 80
+  },
+  {
+    "id": 402,
+    "grade": 3,
+    "name": "Fred Weasley",
+    "email": "fw@school.com",
+    "Maths": 55,
+    "English": 60,
+    "French": 30,
+    "Science": 45,
+    "Social": 20
+  },
+  {
+    "id": 403,
+    "grade": 3,
+    "name": "George Weasley",
+    "email": "gw@school.com",
+    "Maths": 55,
+    "English": 60,
+    "French": 30,
+    "Science": 45,
+    "Social": 20
+  },
+  {
+    "id": 404,
+    "grade": 3,
+    "name": "Oliver Wood",
+    "email": "ow@school.com",
+    "Maths": 75,
+    "English": 80,
+    "French": 75,
+    "Science": 87,
+    "Social": 77
+  },
+  {
+    "id": 405,
+    "grade": 3,
+    "name": "Marcus Flint",
+    "email": "mf@school.com",
+    "Maths": 25,
+    "English": 50,
+    "French": 15,
+    "Science": 30,
+    "Social": 30
+  }
+]

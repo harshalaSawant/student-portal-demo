@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "training-demo": {
+    "student-portal": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/training-demo",
+            "outputPath": "dist/student-portal",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "training-demo:build:production"
+              "browserTarget": "student-portal:build:production"
             },
             "development": {
-              "browserTarget": "training-demo:build:development"
+              "browserTarget": "student-portal:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "training-demo:build"
+            "browserTarget": "student-portal:build"
           }
         },
         "test": {
@@ -111,9 +111,40 @@
               "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "student-portal:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "student-portal:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "student-portal:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "student-portal:serve:production"
+            }
+          }
         }
       }
     }
   },
-  "defaultProject": "training-demo"
+  "defaultProject": "student-portal"
 }

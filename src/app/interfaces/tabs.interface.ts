@@ -16,3 +16,16 @@ export interface IStudentDetail {
   email: string;
   performance: Array<IStudentGrade>;
 }
+
+// Mat table data helper interface
+export interface IStudentTableFormat {
+  id: number;
+  grade?: number;
+  name: string;
+  email: string;
+  Maths: number;
+  English: number;
+  French: number;
+  Science: number;
+  Social: number;
+}

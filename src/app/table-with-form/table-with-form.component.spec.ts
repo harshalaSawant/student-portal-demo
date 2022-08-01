@@ -1,14 +1,10 @@
-import { NO_ERRORS_SCHEMA } from '@angular/compiler';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatTableModule } from '@angular/material/table';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { asyncScheduler, of, Subject } from 'rxjs';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-import { StudentDetailsService } from 'src/app/services/student-details.service';
-
-import { GradesDetailComponent } from './grades-detail.component';
+import { StudentDetailsService } from '../services/student-details.service';
+import { TableWithFormComponent } from './table-with-form.component';
 
 const MockStudentService = {
   studentData: [
@@ -234,39 +230,30 @@ const MockStudentService = {
     ]);
   }
 }
-
-describe('GradesDetailComponent', () => {
-  let component: GradesDetailComponent;
-  let fixture: ComponentFixture<GradesDetailComponent>;
+describe('TableWithFormComponent', () => {
+  let component: TableWithFormComponent;
+  let fixture: ComponentFixture<TableWithFormComponent>;
   let service: StudentDetailsService;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GradesDetailComponent ],
-      imports: [RouterTestingModule,
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatTableModule],
-      providers: [
-        {provide: StudentDetailsService, useValue: MockStudentService}
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
+      declarations: [ TableWithFormComponent ],
+      imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, RouterTestingModule]
     })
-    .compileComponents().then(() => {
-      fixture = TestBed.createComponent(GradesDetailComponent);
-      service = TestBed.inject(StudentDetailsService);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    });
-    
+    .compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(TableWithFormComponent);
+    component = fixture.componentInstance;
+    service = TestBed.inject(StudentDetailsService);
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
   it("should call getData and return list of users", (() => {
-    const task = () => console.log('it works!');
+    const task = () => console.log('getting formatted data for table');
     asyncScheduler.schedule(task, 2000);
     component.grade = 1;
     const response = [{
@@ -327,10 +314,10 @@ describe('GradesDetailComponent', () => {
       ],
       result: 'Pass'
     }];
-    spyOn(service, 'getData').and.callThrough(); //.returnValue(of(response))
+    spyOn(service, 'getData').and.returnValue(of(response))
 
 
-    component.displayDetails();
+    component.getData();
 
     fixture.detectChanges();
   
@@ -449,7 +436,7 @@ describe('GradesDetailComponent', () => {
       ]
     }]);
   }));
-  it("should call saveChanges", (() => {
+  it("should call scoreChange for name change", (() => {
     component.grade = 1;
     spyOn(service, 'getData').and.callThrough(); //.returnValue(of(response))
     component.showActionButtons = true;
@@ -462,7 +449,7 @@ describe('GradesDetailComponent', () => {
       performance: [
         {
           subject: 'Maths',
-          score: 80
+          score: 100
         },
         {
           subject: 'Science',
@@ -478,7 +465,137 @@ describe('GradesDetailComponent', () => {
         },
         {
           subject: 'French',
+          score: 90
+        }
+      ]
+    }];
+    component.scoreChange(101, 'name', '', {target: {value: "G W"}});
+    fixture.detectChanges();
+  
+    expect(component.newScores).toEqual([{
+      id: 101,
+      name: 'G W',
+      grade: 1,
+      email: 'gw@school.com',
+      performance: [
+        {
+          subject: 'Maths',
+          score: 100
+        },
+        {
+          subject: 'Science',
           score: 80
+        },
+        {
+          subject: 'Social',
+          score: 80
+        },
+        {
+          subject: 'English',
+          score: 80
+        },
+        {
+          subject: 'French',
+          score: 90
+        }
+      ]
+    }]);
+  }));
+  it("should call scoreChange for email change", (() => {
+    component.grade = 1;
+    spyOn(service, 'getData').and.callThrough(); //.returnValue(of(response))
+    component.showActionButtons = true;
+    
+    component.newScores = [{
+      id: 101,
+      name: 'Ginny Weasley',
+      grade: 1,
+      email: 'gw@school.com',
+      performance: [
+        {
+          subject: 'Maths',
+          score: 100
+        },
+        {
+          subject: 'Science',
+          score: 80
+        },
+        {
+          subject: 'Social',
+          score: 80
+        },
+        {
+          subject: 'English',
+          score: 80
+        },
+        {
+          subject: 'French',
+          score: 90
+        }
+      ]
+    }];
+    component.scoreChange(101, 'email', '', {target: {value: "gweasley@school.com"}});
+    fixture.detectChanges();
+  
+    expect(component.newScores).toEqual([{
+      id: 101,
+      name: 'Ginny Weasley',
+      grade: 1,
+      email: 'gweasley@school.com',
+      performance: [
+        {
+          subject: 'Maths',
+          score: 100
+        },
+        {
+          subject: 'Science',
+          score: 80
+        },
+        {
+          subject: 'Social',
+          score: 80
+        },
+        {
+          subject: 'English',
+          score: 80
+        },
+        {
+          subject: 'French',
+          score: 90
+        }
+      ]
+    }]);
+  }));
+  it("should call saveChanges", (() => {
+    component.grade = 1;
+    spyOn(service, 'getData').and.callThrough(); //.returnValue(of(response))
+    component.showActionButtons = true;
+    
+    component.newScores = [{
+      id: 101,
+      name: 'Ginny Weasley',
+      grade: 1,
+      email: 'gw@school.com',
+      performance: [
+        {
+          subject: 'Maths',
+          score: 100
+        },
+        {
+          subject: 'Science',
+          score: 80
+        },
+        {
+          subject: 'Social',
+          score: 80
+        },
+        {
+          subject: 'English',
+          score: 80
+        },
+        {
+          subject: 'French',
+          score: 90
         }
       ]
     }];
@@ -488,3 +605,5 @@ describe('GradesDetailComponent', () => {
     expect(component.showActionButtons).toEqual(false);
   }));
 });
+
+

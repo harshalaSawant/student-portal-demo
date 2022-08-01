@@ -9,7 +9,7 @@ import { TabsInterface } from 'src/app/interfaces/tabs.interface';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private routes: Router) {
+  constructor() {
     //Change route to be populated dynamically
     this.mainTabs = [
       {name: 'Tables', id: 0, route: 'tables'},

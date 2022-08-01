@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { StudentDetailsService } from './student-details.service';
@@ -6,7 +7,9 @@ describe('StudentDetailsService', () => {
   let service: StudentDetailsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
     service = TestBed.inject(StudentDetailsService);
   });
 
@@ -41,8 +44,7 @@ describe('StudentDetailsService', () => {
             subject: 'French',
             score: 90
           }
-        ],
-        result: 'Pass'
+        ]
       },
       {
         id: 201,
@@ -70,8 +72,7 @@ describe('StudentDetailsService', () => {
             subject: 'French',
             score: 65
           }
-        ],
-        result: 'Pass'
+        ]
       },
       {
         id: 301,
@@ -99,13 +100,12 @@ describe('StudentDetailsService', () => {
             subject: 'French',
             score: 85
           }
-        ],
-        result: 'Pass'
+        ]
       }
     ];
     service.changeScore(101, 'Maths', 78);
 
-    expect(service.studentData[0].performance.find(x => x.subject === 'Maths').score).toEqual(78);
+    expect(service.studentData[0].performance.find(x => x.subject === 'Maths')?.score).toEqual(78);
   });
   it('should call saveNewScores', () => {
     service.studentData = [
@@ -135,8 +135,7 @@ describe('StudentDetailsService', () => {
             subject: 'French',
             score: 90
           }
-        ],
-        result: 'Pass'
+        ]
       },
       {
         id: 201,
@@ -164,8 +163,7 @@ describe('StudentDetailsService', () => {
             subject: 'French',
             score: 65
           }
-        ],
-        result: 'Pass'
+        ]
       },
       {
         id: 301,
@@ -193,8 +191,7 @@ describe('StudentDetailsService', () => {
             subject: 'French',
             score: 85
           }
-        ],
-        result: 'Pass'
+        ]
       }
     ];
     service.saveNewScores([
@@ -287,6 +284,6 @@ describe('StudentDetailsService', () => {
       }
     ]);
 
-    expect(service.studentData[0].performance.find(x => x.subject === 'Maths').score).toEqual(75);
+    expect(service.studentData[0].performance.find(x => x.subject === 'Maths')?.score).toEqual(75);
   });
 });
